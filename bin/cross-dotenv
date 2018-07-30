@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+var dotenv = require('dotenv');
+var crossEnv = require('cross-env');
+
+dotenv.config({ silent: true });
+
+crossEnv(process.argv.slice(2))
