@@ -5,4 +5,4 @@ var crossEnv = require('cross-env');
 
 dotenv.config({ silent: true });
 
-crossEnv(process.argv.slice(2))
+crossEnv(process.argv.slice(2), {shell: true})
