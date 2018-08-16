@@ -5,4 +5,22 @@ var crossEnv = require('cross-env');
 
 dotenv.config({ silent: true });
 
-crossEnv(process.argv.slice(2), {})
+var args = process.argv.slice(2);
+
+function normalize( args ) {
+    return args.map(function (arg) {
+        Object.keys( process.env )
+            .sort( ( x, y ) => x.length < y.length ) // sort by descending length to prevent partial replacement
+            .forEach( key => {
+                const regex = new RegExp( `\\$${ key }|%${ key }%`, "ig" );
+                arg = arg.replace( regex, process.env[ key ] );
+            } );
+        return arg;
+    } )
+}
+
+if (args.length > 1) {
+	args = normalize(args);
+}
+
+crossEnv(args)
