@@ -1,6 +1,6 @@
 {
   "name": "cross-dotenv",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "combo of kentcdodds/cross-env with dotenv",
   "main": "index.js",
   "scripts": {
